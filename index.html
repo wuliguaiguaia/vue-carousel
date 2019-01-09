@@ -12,10 +12,10 @@
 
 <body>
     <div id="app">
-        <div class="wrapper" @touchstart="Tstart" @touchmove="Tmove" @touchEnd="Tend">
+        <div class="wrapper" @touchstart="Tstart" @touchEnd="Tend">
             <div class="content">
                 <transition-group :name="name" tag="div">
-                    <div class="item" v-show="index === curIndex" v-for="(item,index) in  number" :key="index"  @transitionend="transitionend">{{item}}</div>
+                    <div class="item" v-show="index === curIndex" v-for="(item,index) in  number" :key="index">{{item}}</div>
                 </transition-group>
             </div>
             <div class="dot">

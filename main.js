@@ -7,20 +7,12 @@ new Vue({
         startY: 0,
         disY: 0,
         isTouch: false,
-        name: "toRight",
+        name: "toLeft",
         curIndex: 0,
         timer:null,
     },
     mounted(){
-        let p = document.querySelector(".content div");
-        let ele1 = document.querySelectorAll(".content div .item")[this.number-1].cloneNode(true);
-        p.insertAdjacentElement("afterbegin",ele1);
-        
-        let ele2 = document.querySelectorAll(".content div .item")[0].cloneNode(true);
-        p.insertAdjacentElement("afterend",ele2);
-
         this.autoMove();
-
     },
     watch: {
         isTouch(val){
@@ -34,6 +26,7 @@ new Vue({
     methods: { 
         autoMove(){
             this.timer = setInterval(() => {
+                this.name = "toLeft";
                 this.gotoLeft();
             }, 3000);
         },
@@ -43,7 +36,6 @@ new Vue({
             this.startY = e.changedTouches[0].clientY;
         },
         Tend(e) {
-            
             this.disX = e.changedTouches[0].clientX - this.startX;
             this.disY = e.changedTouches[0].clientY - this.startY;
             let isvertical = Math.abs(this.disX) >= Math.abs(this.disY) ? true : false;
